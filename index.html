@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Relógio Digital</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #121212;
+    }
+
+    .clock-container {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      background-color: #222;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .clock {
+      font-family: Arial, sans-serif;
+      font-size: 3em;
+      color: #fff;
+      text-align: center;
+    }
+
+    .timezone {
+      font-size: 1.5em;
+      color: #888;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .hour-minute-second-container {
+      background-color: #333;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+    }
+
+    .place {
+      font-size: 2em;
+      color: #fff;
+      flex: 1;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock-container">
+    <div class="timezone">Horário de Brasília</div>
+    <div class="hour-minute-second-container">
+      <div class="place hour"></div>
+      <div class="place minute"></div>
+      <div class="place second"></div>
+    </div>
+  </div>
+
+  <script>
+    function setTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+
+      const hourElement = document.querySelector('.hour');
+      const minuteElement = document.querySelector('.minute');
+      const secondElement = document.querySelector('.second');
+
+      hourElement.textContent = hours;
+      minuteElement.textContent = minutes;
+      secondElement.textContent = seconds;
+    }
+
+    setInterval(setTime, 1000);
+  </script>
+</body>
+</html>
